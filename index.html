@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<title>Happy Birthday My Beautiful Majesty Angel Queen Mahi Kumari ❤️</title>
+
+<style>
+  body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#0b0712;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    padding:10px;
+    position:relative;
+    overflow-x:hidden;
+  }
+
+  .card{
+    width:100%;
+    max-width:900px;
+    background:rgba(255,255,255,0.05);
+    padding:16px;
+    border-radius:16px;
+    box-shadow:0 0 20px rgba(0,0,0,0.6);
+    position:relative;
+    z-index:2;
+  }
+
+  h1{
+    text-align:center;
+    font-size:24px;
+    line-height:1.3;
+    margin:0 0 12px;
+  }
+
+  /* Slideshow */
+  .slideshow{
+    width:100%;
+    overflow:hidden;
+    border-radius:12px;
+    position:relative;
+  }
+
+  .slides{
+    width:100%;
+    display:flex;
+    transition:transform 1s ease;
+  }
+
+  .slide{
+    min-width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+
+  .slide img{
+    width:100%;
+    height:auto;
+    max-height:90vh;
+    border-radius:12px;
+    object-fit:contain;
+  }
+
+  /* Navigation buttons */
+  .arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:rgba(0,0,0,0.5);
+    border:none;
+    font-size:24px;
+    padding:8px 14px;
+    border-radius:50%;
+    cursor:pointer;
+    color:white;
+    z-index:3;
+  }
+  .left{ left:10px; }
+  .right{ right:10px; }
+
+  /* Dots */
+  .dots{
+    display:flex;
+    justify-content:center;
+    gap:6px;
+    margin-top:10px;
+  }
+  .dot{
+    width:10px;
+    height:10px;
+    background:#666;
+    border-radius:50%;
+    cursor:pointer;
+  }
+  .dot.active{
+    background:#ff7aa3;
+  }
+
+  /* Message */
+  #typed{
+    text-align:center;
+    font-size:18px;
+    margin-top:18px;
+    line-height:1.4;
+  }
+  #typed::after{
+    content:'';
+    display:inline-block;
+    width:6px;
+    height:16px;
+    background:#ffd1e0;
+    margin-left:4px;
+    animation:blink 1s infinite;
+  }
+  @keyframes blink{50%{opacity:0}}
+
+  .cute-sub{
+    text-align:center;
+    font-size:15px;
+    opacity:0.9;
+    margin-top:10px;
+  }
+
+  /* Secret Message */
+  .secret-area{
+    text-align:center;
+    margin-top:14px;
+  }
+  .btn{
+    padding:10px 18px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+    font-size:15px;
+  }
+  .play-btn{ background:#ff7aa3; color:#111; }
+  .mute-btn{ background:#333; color:#fff; }
+  .secret{
+    margin-top:10px;
+    background:rgba(255,255,255,0.1);
+    padding:12px;
+    border-radius:10px;
+    display:none;
+    font-size:15px;
+  }
+
+  .footer{
+    margin-top:20px;
+    text-align:center;
+    opacity:0.8;
+    font-size:14px;
+  }
+
+  /* FULL-SCREEN LOADING SCREEN WITH HER IMAGE */
+  #loader{
+    position:fixed;
+    inset:0;
+    background:#000;
+    background-image:url("photo2.jpg");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+    transition:opacity 0.7s ease, visibility 0.7s ease;
+  }
+  #loader::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at top, rgba(255,122,163,0.45), rgba(0,0,0,0.75));
+  }
+  #loader.hide{
+    opacity:0;
+    visibility:hidden;
+  }
+  .loader-content{
+    position:relative;
+    z-index:1;
+    text-align:center;
+    padding:18px;
+    border-radius:18px;
+    background:rgba(0,0,0,0.55);
+    box-shadow:0 0 25px rgba(0,0,0,0.8);
+    backdrop-filter:blur(4px);
+    max-width:90%;
+  }
+  .loader-name{
+    font-size:22px;
+    font-weight:700;
+  }
+  .loader-sub{
+    margin-top:8px;
+    font-size:14px;
+    opacity:0.9;
+  }
+  .loader-hearts{
+    margin-top:16px;
+    font-size:22px;
+    animation:floatHearts 1.4s infinite alternate ease-in-out;
+  }
+  @keyframes floatHearts{
+    0%{ transform:translateY(0); }
+    100%{ transform:translateY(-10px); }
+  }
+  .loader-dots{
+    margin-top:10px;
+    font-size:12px;
+    letter-spacing:3px;
+    opacity:0.8;
+    animation:loaderDots 1.2s infinite;
+  }
+  @keyframes loaderDots{
+    0%{ opacity:0.2; }
+    50%{ opacity:1; }
+    100%{ opacity:0.2; }
+  }
+
+  /* FALLING HEARTS LAYER */
+  #heart-layer{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:1;
+  }
+  .fall-heart{
+    position:absolute;
+    top:-40px;
+    font-size:18px;
+    animation:fall linear forwards;
+  }
+  @keyframes fall{
+    0%{ transform:translateY(0) rotate(0deg); opacity:1; }
+    100%{ transform:translateY(110vh) rotate(360deg); opacity:0; }
+  }
+
+  @media (min-width:768px){
+    h1{ font-size:28px; }
+    #typed{ font-size:20px; }
+    .cute-sub{ font-size:16px; }
+    .loader-name{ font-size:26px; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Loading Screen with HER picture (photo2.jpg) -->
+<div id="loader">
+  <div class="loader-content">
+    <div class="loader-name">
+      My Beautiful Majesty Angel Queen<br>Mahi Kumari 💖
+    </div>
+    <div class="loader-sub">
+      Your special surprise page is loading...<br>
+      Every pixel is filled with my love for you. 🥹❤️
+    </div>
+    <div class="loader-hearts">💗 💘 💖</div>
+    <div class="loader-dots">• • •</div>
+  </div>
+</div>
+
+<!-- Falling hearts -->
+<div id="heart-layer"></div>
+
+<div class="card">
+
+  <h1>Happy Birthday, My Beautiful Majesty Angel Queen Mahi Kumari 🎂❤️</h1>
+
+  <!-- Slideshow -->
+  <div class="slideshow" id="slideshow">
+    <div class="slides" id="slides">
+      <div class="slide"><img src="photo1.jpg"></div>
+      <div class="slide"><img src="photo2.jpg"></div>
+      <div class="slide"><img src="photo3.jpg"></div>
+      <div class="slide"><img src="photo4.jpg"></div>
+      <div class="slide"><img src="photo5.jpg"></div>
+    </div>
+
+    <button class="arrow left" id="prev">❤️</button>
+    <button class="arrow right" id="next">❤️</button>
+  </div>
+
+  <div class="dots" id="dots"></div>
+
+  <!-- Main romantic message -->
+  <div id="typed"></div>
+  <div class="cute-sub">Every heartbeat of mine whispers your name ❤️✨</div>
+
+  <!-- Secret message -->
+  <div class="secret-area">
+    <button class="btn play-btn" id="reveal">Reveal Secret 💌</button>
+    <button class="btn mute-btn" id="hide" style="display:none">Hide Secret</button>
+
+    <div class="secret" id="secret">
+      ❤️ You are the kind of person I want to love for a lifetime.<br>
+      You are my peace, my softness, and my forever — AK 💕
+    </div>
+  </div>
+
+  <!-- Music -->
+  <div style="text-align:center;margin-top:14px;">
+    <button class="btn play-btn" id="playBtn">Play Music ▶</button>
+    <button class="btn mute-btn" id="muteBtn">Mute</button>
+
+    <audio id="audio" preload="auto" loop>
+      <source src="birthday_song.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <div class="footer">Made with all my love ❤️ — Your AK</div>
+
+</div>
+
+<script>
+// Typing effect
+let msg = "My beautiful majesty angel queen Mahi Kumari — every day with you is my favorite day.";
+let i = 0;
+function type(){
+  if(i <= msg.length){
+    document.getElementById('typed').textContent = msg.slice(0,i);
+    i++;
+    setTimeout(type,40);
+  }
+}
+
+// Slideshow
+let slideIndex = 0;
+const slides = document.getElementById("slides");
+const dotContainer = document.getElementById("dots");
+let totalSlides = slides.children.length;
+
+// Create dots
+for(let x=0; x<totalSlides; x++){
+  let d = document.createElement("div");
+  d.classList.add("dot");
+  if(x===0) d.classList.add("active");
+  d.dataset.index = x;
+  d.onclick = ()=>goToSlide(x);
+  dotContainer.appendChild(d);
+}
+
+function goToSlide(n){
+  slideIndex = n;
+  slides.style.transform = `translateX(-${n * 100}%)`;
+  updateDots();
+}
+
+function nextSlide(){ goToSlide((slideIndex+1)%totalSlides); }
+function prevSlide(){ goToSlide((slideIndex-1+totalSlides)%totalSlides); }
+
+document.getElementById("next").onclick = nextSlide;
+document.getElementById("prev").onclick = prevSlide;
+
+function updateDots(){
+  document.querySelectorAll(".dot").forEach(d=>d.classList.remove("active"));
+  document.querySelector(`.dot[data-index='${slideIndex}']`).classList.add("active");
+}
+
+// Auto slideshow
+let slideTimer = setInterval(nextSlide, 4000);
+
+// Secret
+const secret = document.getElementById("secret");
+const reveal = document.getElementById("reveal");
+const hideBtn = document.getElementById("hide");
+
+reveal.onclick = ()=>{
+  secret.style.display="block";
+  reveal.style.display="none";
+  hideBtn.style.display="inline-block";
+};
+hideBtn.onclick = ()=>{
+  secret.style.display="none";
+  reveal.style.display="inline-block";
+  hideBtn.style.display="none";
+};
+
+// Music
+const audio = document.getElementById("audio");
+const playBtn = document.getElementById("playBtn");
+const muteBtn = document.getElementById("muteBtn");
+
+playBtn.onclick = ()=>{
+  if(audio.paused){
+    audio.play();
+    playBtn.textContent="Pause ⏸";
+  } else {
+    audio.pause();
+    playBtn.textContent="Play Music ▶";
+  }
+};
+
+muteBtn.onclick = ()=> audio.muted = !audio.muted;
+
+// Loading + start hearts + typing
+window.addEventListener("load", () => {
+  setTimeout(()=>{
+    document.getElementById("loader").classList.add("hide");
+    type();
+    startHearts();
+  }, 1400);
+});
+
+// Falling hearts animation
+function createHeart(){
+  const layer = document.getElementById("heart-layer");
+  const heart = document.createElement("div");
+  heart.classList.add("fall-heart");
+  heart.textContent = "💗";
+
+  const startLeft = Math.random() * 100;
+  const duration = 4 + Math.random() * 4;
+  const drift = (Math.random()*80 - 40);
+
+  heart.style.left = startLeft + "vw";
+  heart.style.setProperty("--drift", drift + "px");
+  heart.style.animationDuration = duration + "s";
+
+  layer.appendChild(heart);
+
+  setTimeout(()=>{ heart.remove(); }, duration*1000 + 500);
+}
+
+function startHearts(){
+  setInterval(createHeart, 700);
+}
+</script>
+</body>
+</html>
